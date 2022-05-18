@@ -1,0 +1,92 @@
+function varargout = tag_090(varargin)
+% TAG_090 MATLAB code for tag_090.fig
+%      TAG_090, by itself, creates a new TAG_090 or raises the existing
+%      singleton*.
+%
+%      H = TAG_090 returns the handle to a new TAG_090 or the handle to
+%      the existing singleton*.
+%
+%      TAG_090('CALLBACK',hObject,eventData,handles,...) calls the local
+%      function named CALLBACK in TAG_090.M with the given input arguments.
+%
+%      TAG_090('Property','Value',...) creates a new TAG_090 or raises the
+%      existing singleton*.  Starting from the left, property value pairs are
+%      applied to the GUI before tag_090_OpeningFcn gets called.  An
+%      unrecognized property name or invalid value makes property application
+%      stop.  All inputs are passed to tag_090_OpeningFcn via varargin.
+%
+%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+%      instance to run (singleton)".
+%
+% See also: GUIDE, GUIDATA, GUIHANDLES
+
+% Edit the above text to modify the response to help tag_090
+
+% Last Modified by GUIDE v2.5 18-May-2022 14:38:02
+
+% Begin initialization code - DO NOT EDIT
+gui_Singleton = 1;
+gui_State = struct('gui_Name',       mfilename, ...
+                   'gui_Singleton',  gui_Singleton, ...
+                   'gui_OpeningFcn', @tag_090_OpeningFcn, ...
+                   'gui_OutputFcn',  @tag_090_OutputFcn, ...
+                   'gui_LayoutFcn',  [] , ...
+                   'gui_Callback',   []);
+if nargin && ischar(varargin{1})
+    gui_State.gui_Callback = str2func(varargin{1});
+end
+
+if nargout
+    [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+else
+    gui_mainfcn(gui_State, varargin{:});
+end
+% End initialization code - DO NOT EDIT
+
+
+% --- Executes just before tag_090 is made visible.
+function tag_090_OpeningFcn(hObject, eventdata, handles, varargin)
+% This function has no output args, see OutputFcn.
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+% varargin   command line arguments to tag_090 (see VARARGIN)
+
+% Choose default command line output for tag_090
+handles.output = hObject;
+
+% Update handles structure
+guidata(hObject, handles);
+
+% UIWAIT makes tag_090 wait for user response (see UIRESUME)
+% uiwait(handles.figure1);
+
+
+% --- Outputs from this function are returned to the command line.
+function varargout = tag_090_OutputFcn(hObject, eventdata, handles) 
+% varargout  cell array for returning output args (see VARARGOUT);
+% hObject    handle to figure
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+% Get default command line output from handles structure
+varargout{1} = handles.output;
+
+
+% --- Executes on button press in pushbutton1.
+function pushbutton1_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton1 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in pushbutton2.
+function pushbutton2_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton2 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.uitable1,'visible','on')
+opts = detectImportOptions('Dataset Hostel Jepang.xlsx');
+opts.SelectedVariableNames=(4:5-);
+data =  readmatrix('Dataset Hostel Jepang.xlsx', opts);
+set(handles.uitable1,'data',data);
